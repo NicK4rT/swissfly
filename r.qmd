@@ -11,12 +11,27 @@ destination_df <- flights_data[, c("Destination", "Destination_Code", "Destinati
 colnames(destination_df) <- c("Airport", "Airport_Code", "Timezone")
 
 all_airports_df <- unique(rbind(origin_df, destination_df))
-
 all_airports_df$Label <- paste0(all_airports_df$Airport, " (", all_airports_df$Airport_Code, ")")
 
 final_df <- all_airports_df[, c("Label", "Timezone")]
 
+flights_data <- flights_data %>%
+  left_join(all_airports_df[, c("Airport", "Airport_Code", "Label")],
+            by = c("Origin" = "Airport", "Origin_Code" = "Airport_Code")) %>%
+  rename(Origin_Label = Label) %>%
+  left_join(all_airports_df[, c("Airport", "Airport_Code", "Label")],
+            by = c("Destination" = "Airport", "Destination_Code" = "Airport_Code")) %>%
+  rename(Destination_Label = Label)
+
+# Format as HH:MM
+flights_data$Departure_Time <- format(as.POSIXct(flights_data$Departure_Time, origin = "1899-12-30"), "%H:%M")
+flights_data$Arrival_Time   <- format(as.POSIXct(flights_data$Arrival_Time, origin = "1899-12-30"), "%H:%M")
+
+# Result: flights_data now contains Origin_Label and Destination_Label columns
+head(flights_data)
+
 print(final_df)
+write.csv(flights_data, "flights.csv", row.names = FALSE)
 
 rm(origin_df, destination_df)
 
