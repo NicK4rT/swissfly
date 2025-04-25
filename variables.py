@@ -390,6 +390,13 @@ airport_timezone_by_label = {
     "Casablanca (CMN)": "0"
 }
 
+connecting_points = {
+    "PMB": 30,
+    "DCI": 45,
+    "EEI": 20,
+    "SAI": 20
+}
+
 config = {
     "A319": {"F": 0, "C": 8, "E": 0, "Y": 36},
     "A32A": {"F": 0, "C": 8, "E": 0, "Y": 42},
