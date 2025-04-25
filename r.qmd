@@ -1,0 +1,56 @@
+
+```{r}
+library(readxl)
+
+flights_data <- read_excel("flights.xlsx")
+
+origin_df <- flights_data[, c("Origin", "Origin_Code", "Origin_Timezone")]
+colnames(origin_df) <- c("Airport", "Airport_Code", "Timezone")
+
+destination_df <- flights_data[, c("Destination", "Destination_Code", "Destination_Timezone")]
+colnames(destination_df) <- c("Airport", "Airport_Code", "Timezone")
+
+all_airports_df <- unique(rbind(origin_df, destination_df))
+
+all_airports_df$Label <- paste0(all_airports_df$Airport, " (", all_airports_df$Airport_Code, ")")
+
+final_df <- all_airports_df[, c("Label", "Timezone")]
+
+print(final_df)
+
+rm(origin_df, destination_df)
+
+labels <- final_df$Label
+
+labels <- final_df$Label
+names <- all_airports_df$Airport
+codes <- all_airports_df$Airport_Code
+timezones <- all_airports_df$Timezone
+
+label_lines <- paste0('    "', labels, '",')
+label_lines[length(label_lines)] <- sub(",$", "", label_lines[length(label_lines)])
+
+name_lines <- paste0('    "', labels, '": "', names, '",')
+code_lines <- paste0('    "', labels, '": "', codes, '",')
+tz_lines   <- paste0('    "', labels, '": "', timezones, '",')
+
+name_lines[length(name_lines)] <- sub(",$", "", name_lines[length(name_lines)])
+code_lines[length(code_lines)] <- sub(",$", "", code_lines[length(code_lines)])
+tz_lines[length(tz_lines)]     <- sub(",$", "", tz_lines[length(tz_lines)])
+
+py_content <- c(
+  "labels = [", label_lines, "]",
+  "",
+  "airport_name_by_label = {", name_lines, "}",
+  "",
+  "airport_code_by_label = {", code_lines, "}",
+  "",
+  "airport_timezone_by_label = {", tz_lines, "}"
+)
+
+writeLines(py_content, "variables.py")
+
+rm(code_lines, codes, label_lines, labels, name_lines, names, py_content, timezones, tz_lines)
+
+```
+
