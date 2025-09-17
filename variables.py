@@ -412,20 +412,55 @@ config = {
     "B77W": {"F": 8, "C": 42, "E": 12, "Y": 90}
 }
 
-fares = {
-        'Saver': [
-            "Non-refundable",
-            "Non-rebookable",
-            "Seat selection fee"
-        ],
-        'Basic': [
-            "Non-refundable",
-            "Rebookable against a fee",
-            "Free seat selection"
-        ],
-        'Flex': [
-            "Fully refundable",
-            "Rebookable for free",
-            "Free seat selection"
-        ]
-    }
+cmap = {'F':'First','C':'Business','E':'Premium','Y':'Economy'}
+
+fares = {'Y': {'Saver': {"NRF": [], "NRB": [], "CL": 0, "CO": 1, "BG": 5},
+               'Basic': {"PRF": [ 75, 150], "PRB": [ 75, 150], "CL": 1, "CO": 1, "BG": 4},
+               'Flex': {"FRF": [], "FRB": [], "CL": 1, "CO": 1, "BG": 3}
+               },
+         'E': {'Saver': {"NRF": [], "NRB": [], "CL": 0, "CO": 1, "BG": 4},
+               'Basic': {"PRF": [100, 200], "PRB": [100, 200], "CL": 1, "CO": 1, "BG": 3},
+               'Flex': {"FRF": [], "FRB": [], "CL": 1, "CO": 1, "BG": 3}
+               },
+         'C': {'Saver': {"NRF": [], "NRB": [], "CL": 2, "CO": 2, "CI": "Priority Check-In", "FT": "Priority Security", "LA":  "Business Class Lounge", "BG": 2},
+               'Basic': {"PRF": [150, 250], "PRB": [150, 250], "CL": 2, "CO": 2, "CI": "Priority Check-In", "FT": "Priority Security", "LA":  "Business Class Lounge", "BG": 2},
+               'Flex': {"FRF": [], "FRB": [], "CL": 2, "CO": 2, "CI": "Priority Check-In", "FT": "Priority Security", "LA":  "Business Class Lounge", "BG": 2}
+               },
+         'F': {'Saver': {"NRF": [], "NRB": [], "CL": 3, "CO": 2, "CI": "Private Check-In Area", "FT": "Private Security Check-Point", "LA": "First Class Lounge", "BG": 0},
+               'Basic': {"PRF": [250, 500], "PRB": [250, 500], "CL": 3, "CO": 2, "CI": "Private Check-In Area", "FT": "Private Security Check-Point", "LA": "First Class Lounge", "BG": 0},
+               'Flex': {"FRF": [], "FRB": [], "CL": 3, "CO": 2, "CI": "Private Check-In Area", "FT": "Private Security Check-Point", "LA": "First Class Lounge", "BG": 0}
+               }
+         }
+
+ancillaries = {'Y': {'Saver': {"SR": [30, 50], "ACL": [30, 50], "CI": 25, "FT": 40, "LA": 75},
+                     'Basic': {"SR": [30, 50], "ACL": [30, 50], "CI": 25, "FT": 40, "LA": 75},
+                     'Flex':  {"SR": [0, 0], , "ACL": [30, 50], "CI": 25, "FT": 40, "LA": 75}
+                     },
+               'E': {'Saver': {"SR": [30, 50], "ACL": [30, 50], "CI": 25, "FT": 40, "LA": 50},
+                     'Basic': {"SR": [30, 50], "ACL": [30, 50], "CI": 25, "FT": 40, "LA": 50},
+                     'Flex':  {"SR": [0, 0],   "ACL": [30, 50], "CI": 25, "FT": 40, "LA": 50}
+                     },
+               'C': {'Saver': {"SR": [0, 0], "ACL": [30, 50]},
+                     'Basic': {"SR": [0, 0], "ACL": [30, 50]},
+                     'Flex':  {"SR": [0, 0], "ACL": [30, 50]}
+                     },
+               'F': {'Saver': {"SR": [0, 0], "ACL": [30, 50]},
+                     'Basic': {"SR": [0, 0], "ACL": [30, 50]},
+                     'Flex':  {"SR": [0, 0], "ACL": [30, 50]}
+                     }
+               }
+
+dictionariy = {"N": "Not",
+               "P": "Penalty",
+               "F": "Free",
+               "RF": "refundable",
+               "RB": "rebookable",
+               "SS": "Seat-Reservation",
+               "CL": "Checked Luggage",
+               "ACL": "Additional Checked Luggage",
+               "CO": "Carry-On Luggage",
+               "CI": "Check-In",
+               "LA": "Lounge Access",
+               "FT": "Security Fast Track",
+               "BG": "Boarding Group"
+               }
