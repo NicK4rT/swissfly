@@ -411,3 +411,21 @@ config = {
     "B77L": {"F": 8, "C": 34, "E": 18, "Y": 54},
     "B77W": {"F": 8, "C": 42, "E": 12, "Y": 90}
 }
+
+fares = {
+        'Saver': [
+            "Non-refundable",
+            "Non-rebookable",
+            "Seat selection fee"
+        ],
+        'Basic': [
+            "Non-refundable",
+            "Rebookable against a fee",
+            "Free seat selection"
+        ],
+        'Flex': [
+            "Fully refundable",
+            "Rebookable for free",
+            "Free seat selection"
+        ]
+    }
