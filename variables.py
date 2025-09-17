@@ -416,19 +416,19 @@ cmap = {'F':'First','C':'Business','E':'Premium','Y':'Economy'}
 
 fares = {'Y': {'Saver': {"NRF": [], "NRB": [], "CL": 0, "CO": 1, "BG": 5},
                'Basic': {"PRF": [ 75, 150], "PRB": [ 75, 150], "CL": 1, "CO": 1, "BG": 4},
-               'Flex': {"FRF": [], "FRB": [], "CL": 1, "CO": 1, "BG": 3, "SDC": "free"}
+               'Flex': {"FRF": [], "FRB": [], "CL": 1, "CO": 1, "BG": 3, "SDC": []}
                },
          'E': {'Saver': {"NRF": [], "NRB": [], "CL": 0, "CO": 1, "BG": 4},
                'Basic': {"PRF": [100, 200], "PRB": [100, 200], "CL": 1, "CO": 1, "BG": 3},
-               'Flex': {"FRF": [], "FRB": [], "CL": 1, "CO": 1, "BG": 3, "SDC": "free"}
+               'Flex': {"FRF": [], "FRB": [], "CL": 1, "CO": 1, "BG": 3, "SDC": []}
                },
          'C': {'Saver': {"NRF": [], "NRB": [], "CL": 2, "CO": 2, "CI": "Priority Check-In", "FT": "Priority Security", "LA":  "Business Class Lounge", "BG": 2},
                'Basic': {"PRF": [150, 250], "PRB": [150, 250], "CL": 2, "CO": 2, "CI": "Priority Check-In", "FT": "Priority Security", "LA":  "Business Class Lounge", "BG": 2},
-               'Flex': {"FRF": [], "FRB": [], "CL": 2, "CO": 2, "CI": "Priority Check-In", "FT": "Priority Security", "LA":  "Business Class Lounge", "BG": 2, "SDC": "free"}
+               'Flex': {"FRF": [], "FRB": [], "CL": 2, "CO": 2, "CI": "Priority Check-In", "FT": "Priority Security", "LA":  "Business Class Lounge", "BG": 2, "SDC": []}
                },
          'F': {'Saver': {"NRF": [], "NRB": [], "CL": 3, "CO": 2, "CI": "Private Check-In Area", "FT": "Private Security Check-Point", "LA": "First Class Lounge", "BG": 0},
                'Basic': {"PRF": [250, 500], "PRB": [250, 500], "CL": 3, "CO": 2, "CI": "Private Check-In Area", "FT": "Private Security Check-Point", "LA": "First Class Lounge", "BG": 0},
-               'Flex': {"FRF": [], "FRB": [], "CL": 3, "CO": 2, "CI": "Private Check-In Area", "FT": "Private Security Check-Point", "LA": "First Class Lounge", "BG": 0, "SDC": "free"}
+               'Flex': {"FRF": [], "FRB": [], "CL": 3, "CO": 2, "CI": "Private Check-In Area", "FT": "Private Security Check-Point", "LA": "First Class Lounge", "BG": 0, "SDC": []}
                }
          }
 
@@ -452,12 +452,12 @@ ancillaries = {'Y': {'Saver': {"SR": [30, 50], "ACL": [30, 50], "CI": 25, "FT": 
 
 dictionary = {"RF": "refundable",
               "RB": "rebookable",
-              "NRF": "non-refundable",
-              "PRF": "refundable against a fee",
-              "FRF": "fully refundable",
-              "NRB": "non-rebookable",
-              "PRB": "rebookable against a fee + fare difference",
-              "FRB": "fully rebookable for fare difference",
+              "NRF": "Non-refundable",
+              "PRF": "Refundable against a fee",
+              "FRF": "Fully refundable",
+              "NRB": "Non-rebookable",
+              "PRB": "Rebookable against a fee + fare difference",
+              "FRB": "Rebookable for free + fare difference",
               "SR": "Seat-Reservation",
               "CL": "Checked Luggage",
               "ACL": "Additional Checked Luggage",
@@ -466,7 +466,7 @@ dictionary = {"RF": "refundable",
               "LA": "Lounge Access",
               "FT": "Security Fast Track",
               "BG": "Boarding Group",
-              "SDC": "Same-day change"
+              "SDC": "Free same-day change"
               }
 
 formula = ""
