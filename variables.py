@@ -464,3 +464,5 @@ dictionariy = {"N": "Not",
                "FT": "Security Fast Track",
                "BG": "Boarding Group"
                }
+
+formula = ""
